@@ -1,0 +1,53 @@
+﻿//multiplicacao
+
+INPUT
+Store X
+
+INPUT
+Store Y
+Skipcond 800
+Jump trataY //se o y não é > 0, precisa ser verificado
+Jump multiplica
+
+trataY, Load Y
+		Skipcond 400 //se o y for 0, já é direcionado pro resultado, pois 0 vezes
+                     //qualquer coisa é 0     
+        Skipcond 000 //caso não seja 0, isso quer dizer que é negativo, será 
+        			 //invertido para realizar a operação
+        Jump resultado
+        Store numY
+        Load zero
+        Subt Y
+        Store Y
+
+multiplica,  Load num
+		     Add X
+        	 Store num
+
+         	 Load Y
+         	 Subt one
+         	 Store Y
+
+         	 Skipcond 400
+		     Jump multiplica
+			 
+             Load numY //funciona como o flag que o prof mencionou em sala,
+             		   //e se estiver zerado, o y não foi negativo
+             Skipcond 400 
+             Jump inverteResultado
+             Jump resultado
+
+inverteResultado,  Load zero
+			       Subt num
+        		   Store num
+
+resultado, Load num
+		   Output
+		   Halt
+
+X, DEC 0
+Y, DEC 0
+num, DEC 0
+one, DEC 1
+zero, DEC 0
+numY, DEC 0

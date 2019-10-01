@@ -1,0 +1,50 @@
+﻿//divisão
+
+INPUT
+Store X
+Store resto
+Skipcond 800
+Jump trataX //se o x não é > 0, precisa ser verificado
+Jump recebeY
+
+recebeY, INPUT
+		 Store Y
+         Skipcond 800
+		 Jump trataY //se o y não é > 0, precisa ser verificado
+		 Jump divide
+
+trataX, Load X
+	    Skipcond 000
+        Jump resultado //0 dividido por qualquer coisa é 0
+        
+trataY, Load Y
+	    Skipcond 000
+        Jump resultado //nao consegui tratar negativos e não é 
+        	//possível dividir por 0, por isso pula para o resultado
+
+divide,  Load X
+		 Subt Y
+         Store X
+         
+		 Load num
+         Add one
+         Store num
+         
+         Load X
+         Store resto
+         Load resto
+         Subt Y        
+		 Skipcond 000 
+		 Jump divide 
+        
+resultado, Load num
+		   Output
+           Load X
+           Output
+		   Halt
+
+X, DEC 0
+Y, DEC 0
+num, DEC 0
+one, DEC 1
+resto, DEC 0

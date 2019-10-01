@@ -1,0 +1,51 @@
+﻿//fatorial
+
+INPUT
+Store fat
+Skipcond 400
+Jump fatorial
+Add one
+Store num
+Jump resultado
+
+fatorial, Load fat
+		  Store mulOpA
+		  Load num
+		  Skipcond 800 
+		  Load one 
+		  Store mulOpB
+		  Load zero	
+		  Store mulNum
+		  Jump mul
+
+fatLoop, Load mulNum
+		 Store num
+		 Load fat
+		 Subt one
+		 Skipcond 800
+         Jump resultado
+  	  	 Store fat
+ 		 Jump fatorial
+
+mul,   Load mulNum
+	   Add mulOpB
+	   Store mulNum
+	   Load mulOpA
+	   Subt one
+	   Store mulOpA
+	   Skipcond 400
+	   Jump mul
+	   Jump fatLoop
+
+resultado, 	Load num
+			Output
+			Halt
+
+
+fat, DEC 0
+num, DEC 0
+mulOpA, DEC 0
+mulOpB, DEC 0
+mulNum, DEC 0
+zero, DEC 0
+one, DEC 1
